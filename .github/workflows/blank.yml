@@ -54,7 +54,16 @@ jobs:
      #   at: all
      #   content: |
      #    ${{env.FILE_TEXT}}
-                     
+     
+     # - name: '发送到微信群'
+        uses: fifsky/dingtalk-action@master
+        with:
+        url: ${{ secrets.DINGTALK_WEBHOOK}}
+        type: text
+        at: all
+        content: |
+         ${{env.FILE_TEXT}}   
+         
       - name: '打完收工,提交代码!'
         run: |
           git config --local user.email "864562082@qq.com"
